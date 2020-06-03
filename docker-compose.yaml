@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  dj:
+    container_name: dj
+    build: AIplatform
+    command: python3.6 manage.py runserver 0.0.0.0:9500 --settings=AIplatform.settings.prod
+    volumes:
+      - ./AIplatform:/code
+    ports:
+      - "9500:9500"
+  ng:
+    container_name: ng
+    build: ai-portal-ui
+    #command: cd /usr/share/nginx/html && ng serve --host 0.0.0.0 --port 4201 --prod --disable-host-check
+    ports:
+      - "4201:4201"
